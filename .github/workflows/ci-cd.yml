@@ -1,0 +1,39 @@
+name: Sakto Docs CI/CD
+
+on:
+  push:
+    branches:
+      - prod
+  pull_request:
+    branches:
+      - main
+      - prod
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install mkdocs-material
+
+      # Step 1: Validation 
+      # Runs on all PRs to catch broken links before merging
+      - name: Test Build Docs
+        run: mkdocs build --strict
+
+      # Step 2: Deployment 
+      # Runs only when code is officially merged into the 'prod' branch
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/prod'
+        run: mkdocs gh-deploy --force
