@@ -35,7 +35,3 @@ theme:
 # Navigation Structure
 nav:
   - Home: index.md
-  - Getting Started:
-    - Introduction: getting-started/intro.md
-    - Core Features: getting-started/features.md
-  - Troubleshooting: troubleshooting.md
