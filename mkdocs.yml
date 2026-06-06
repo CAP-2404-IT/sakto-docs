@@ -1,0 +1,41 @@
+site_name: Sakto Help Center
+site_description: User documentation and help guides for the Sakto website
+
+# Repository integration
+repo_name: sakto-docs
+repo_url: https://github.com/CAP-2404-IT/sakto-docs
+edit_uri: edit/main/docs/
+
+# Theme configuration
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green  # Sets the header and primary elements to green
+      accent: light-green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green  # You can keep it green or use a different shade like 'indigo'
+      accent: lime
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+
+# Navigation Structure
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Introduction: getting-started/intro.md
+    - Core Features: getting-started/features.md
+  - Troubleshooting: troubleshooting.md
